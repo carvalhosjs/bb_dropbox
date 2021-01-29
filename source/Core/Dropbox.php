@@ -5,9 +5,19 @@
 
     class Dropbox extends Request{
 
+        private $token;
+        private $userToken;
+
         public function __construct(string $uri)
         {
             parent::__construct($uri);
+        }
+
+        public function auth(string $token, string $userToken)
+        {
+            $this->token = $token;
+            $this->userToken = $userToken;
+            return $this;
         }
 
         public function listFolder($path)
@@ -17,8 +27,8 @@
             }
             $data = $this
                 ->withJson()
-                ->setHeader("Authorization", DROPBOX_API_TOKEN)
-                ->setHeader("Dropbox-API-Select-User", DROPBOX_API_SELECT_USER)
+                ->setHeader("Authorization", $this->token)
+                ->setHeader("Dropbox-API-Select-User", $this->userToken)
                 ->post(
                 ["path" => $path]
             )->run()->data();
@@ -34,8 +44,8 @@
             }
             $this
                 ->post()
-                ->setHeader("Authorization", DROPBOX_API_TOKEN)
-                ->setHeader("Dropbox-API-Select-User", DROPBOX_API_SELECT_USER)
+                ->setHeader("Authorization", $this->token)
+                ->setHeader("Dropbox-API-Select-User", $this->userToken)
                 ->setJsonHeader("Dropbox-API-Arg", ['path' => $id])
                 ->download($dest);
             return true;
@@ -52,8 +62,8 @@
             }
             $this
                 ->post()
-                ->setHeader("Authorization", DROPBOX_API_TOKEN)
-                ->setHeader("Dropbox-API-Select-User", DROPBOX_API_SELECT_USER)
+                ->setHeader("Authorization", $this->token)
+                ->setHeader("Dropbox-API-Select-User", $this->userToken)
                 ->setJsonHeader("Dropbox-API-Arg", ['path' => $path])
                 ->download($dest);
 
@@ -79,8 +89,8 @@
 
              $this
                 ->sendFile($disk)
-                ->setHeader("Authorization", DROPBOX_API_TOKEN)
-                ->setHeader("Dropbox-API-Select-User", DROPBOX_API_SELECT_USER)
+                ->setHeader("Authorization", $this->token)
+                ->setHeader("Dropbox-API-Select-User", $this->userToken)
                 ->setHeader("Content-Type", 'application/octet-stream')
                 ->setJsonHeader("Dropbox-API-Arg", ["path" => $cloud, "mode" => "overwrite",  "autorename" => true, "mute" => false, 'strict_conflict' => false])
                 ->run();
@@ -97,8 +107,8 @@
             $this
                 ->post(['path' => $path])
                 ->withJson()
-                ->setHeader("Authorization", DROPBOX_API_TOKEN)
-                ->setHeader("Dropbox-API-Select-User", DROPBOX_API_SELECT_USER)
+                ->setHeader("Authorization", $this->token)
+                ->setHeader("Dropbox-API-Select-User", $this->userToken)
                 ->run();
             return true;
         }
@@ -112,8 +122,8 @@
              $this
                 ->post()
                 ->setJsonHeader("Dropbox-API-Arg", ["path" => $path])
-                ->setHeader("Authorization", DROPBOX_API_TOKEN)
-                ->setHeader("Dropbox-API-Select-User", DROPBOX_API_SELECT_USER)
+                ->setHeader("Authorization", $this->token)
+                ->setHeader("Dropbox-API-Select-User", $this->userToken)
                 ->run()->withErrors();
             return true;
 
@@ -138,8 +148,8 @@
                         ]
                     ])
                     ->withJson()
-                    ->setHeader("Authorization", DROPBOX_API_TOKEN)
-                    ->setHeader("Dropbox-API-Select-User", DROPBOX_API_SELECT_USER)
+                    ->setHeader("Authorization", $this->token)
+                    ->setHeader("Dropbox-API-Select-User", $this->userToken)
                     ->run()->data()['matches'];
 
 

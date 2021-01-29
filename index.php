@@ -6,13 +6,20 @@
 
     use BBDropbox\Core\Dropbox;
 
-//    $url = "https://api.dropboxapi.com/2/files/list_folder";
-//    $url2 = "https://content.dropboxapi.com/2/files/download";
+    $url = "https://api.dropboxapi.com/2/files/list_folder";
+    $url2 = "https://content.dropboxapi.com/2/files/download";
+
+    $token= "";
+    $userToken= "";
+//     $data = (new Dropbox($url))->auth("/digital/historico/4517/aso");
+     $path = __DIR__ . '/../../novo/teste/224401.json';
+     $data = (new Dropbox($url))->auth($token, $userToken)
+         ->listFolder("/teste");
 
 
-//     $data = (new Dropbox($url))->listFolder("/digital/historico/4517/aso");
-//     $path = __DIR__ . '/../../novo/teste/224401.json';
-//     $data = (new Dropbox($url2))->downloadFile("/digital/historico/4517/aso/224401.json", $path);
+    echo "<pre>";
+    var_dump($data);
+    echo "</pre>";
 
 //    $url3 = "https://content.dropboxapi.com/2/files/download_zip";
 //    $path2 = __DIR__ . '/../../novo/teste/funcionarios.zip';

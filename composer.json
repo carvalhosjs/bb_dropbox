@@ -16,11 +16,7 @@
   "autoload": {
     "psr-4": {
       "BBDropbox\\": "source/"
-    },
-    "files": [
-      "source/Support/Config.php",
-      "source/Support/Helpers.php"
-    ]
+    }
   },
   "require": {
     "php": "^7.1",
