@@ -1,0 +1,30 @@
+{
+  "name": "bblibs/bb_dropbox",
+  "description": "Request Dropbox para PHP",
+  "minimum-stability": "stable",
+  "authors": [
+    {
+      "name": "Carlos Mateus Carvalho",
+      "email": "carvalho.ti.adm@gmail.com",
+      "homepage": "https://carvalhosjs.github.io/",
+      "role": "Developer"
+    }
+  ],
+  "config": {
+    "vendor-dir": "vendor"
+  },
+  "autoload": {
+    "psr-4": {
+      "BBDropbox\\": "source/"
+    },
+    "files": [
+      "source/Support/Config.php",
+      "source/Support/Helpers.php"
+    ]
+  },
+  "require": {
+    "php": "^7.1",
+    "bblibs/bb_curl" : "dev-main",
+    "bblibs/bb_session" : "dev-main"
+  }
+}

@@ -1,0 +1,96 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "1604d913abf4a382858b0715c9d5f7ac",
+    "packages": [
+        {
+            "name": "bblibs/bb_curl",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/carvalhosjs/bb_curl.git",
+                "reference": "51627576820e93c71bd3a32982510a2e310945a4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/carvalhosjs/bb_curl/zipball/51627576820e93c71bd3a32982510a2e310945a4",
+                "reference": "51627576820e93c71bd3a32982510a2e310945a4",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "BBCurl\\": "source/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Carlos Mateus Carvalho",
+                    "email": "carvalho.ti.adm@gmail.com",
+                    "homepage": "https://carvalhosjs.github.io/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Request CURL para PHP",
+            "time": "2021-01-29T17:12:17+00:00"
+        },
+        {
+            "name": "bblibs/bb_session",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/carvalhosjs/bb_session.git",
+                "reference": "46780adfdee2a51766c6fdaed748265b30692204"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/carvalhosjs/bb_session/zipball/46780adfdee2a51766c6fdaed748265b30692204",
+                "reference": "46780adfdee2a51766c6fdaed748265b30692204",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "BBSession\\": "source/"
+                },
+                "files": [
+                    "source/Support/Helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Carlos Mateus Carvalho",
+                    "email": "carvalho.ti.adm@gmail.com",
+                    "homepage": "https://carvalhosjs.github.io/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Controle de Sessao",
+            "time": "2021-01-29T14:30:05+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "bblibs/bb_curl": 20,
+        "bblibs/bb_session": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": {
+        "php": "^7.1"
+    },
+    "platform-dev": []
+}
