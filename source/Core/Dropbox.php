@@ -26,6 +26,22 @@
                 ->post(['limit' => 100, 'include_removed' => false])->run()->data();
         }
 
+        public function memberInfo()
+        {
+            if (bb_session_request_limit("memberInfo", 3, 60*5)) {
+               // return true;
+            }
+
+           return (new Request(URI_MEMBER_INFO))->withJson()
+                ->setHeader("Authorization", $this->token)
+                ->post([
+                    "members" => [
+                        [".tag" => "team_member_id",
+                        "team_member_id" => $this->userToken]
+                    ]
+                ])->run()->data();
+        }
+
 
         public function listFolder($path)
         {
