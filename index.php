@@ -6,48 +6,16 @@
 
     use BBDropbox\Core\Dropbox;
 
-    $url = "https://api.dropboxapi.com/2/files/list_folder";
-    $url2 = "https://content.dropboxapi.com/2/files/download";
 
     $token= "";
     $userToken= "";
-//     $data = (new Dropbox($url))->auth("/digital/historico/4517/aso");
-     $path = __DIR__ . '/../../novo/teste/224401.json';
-     $data = (new Dropbox($url))->auth($token, $userToken)
-         ->listFolder("/teste");
 
-
-    echo "<pre>";
-    var_dump($data);
-    echo "</pre>";
-
-//    $url3 = "https://content.dropboxapi.com/2/files/download_zip";
-//    $path2 = __DIR__ . '/../../novo/teste/funcionarios.zip';
-//    $data = (new Dropbox($url3))->downloadZip("/digital/historico/4517/aso", $path2, true, '4517');
-
+//     $data = (new Dropbox())->auth($token, $userToken)
+//         ->listFolder("/digital/logs");
 //
-//    $url4 = "https://content.dropboxapi.com/2/files/upload";
-//    $disk = __DIR__ . '/../../novo/teste/224401.json';
-//    $cloud = '/teste/teste.json';
-//    $data = (new Dropbox($url4))->upload($disk, $cloud);
-
-
-//    $url5 = "https://api.dropboxapi.com/2/files/delete_v2";
-//    $cloud = "/teste/teste.json";
-//    $data = (new Dropbox($url5))->deleteFile($cloud);
-
+//    $data = (new Dropbox())->auth($token, $userToken)
+//            ->downloadZip("/digital/logs", "teste.zip");
 //
-//    $url6 = "https://content.dropboxapi.com/2/files/export";
-//    $cloud = "/teste/95.jpg";
-//    $data = (new Dropbox($url6))->exportFile($cloud);
-
-
-//    $url7 = "https://api.dropboxapi.com/2/files/search_v2";
-//    $query = "95";
-//    $cloud = "/teste";
-//    $data = (new Dropbox($url7))->searchFileFolder($query, $cloud);
-
-
 //    echo "<pre>";
 //    var_dump($data);
 //    echo "</pre>";

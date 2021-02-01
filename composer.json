@@ -16,7 +16,10 @@
   "autoload": {
     "psr-4": {
       "BBDropbox\\": "source/"
-    }
+    },
+    "files": [
+      "source/Boot/Config.php"
+      ]
   },
   "require": {
     "php": "^7.1",

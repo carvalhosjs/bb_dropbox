@@ -3,29 +3,36 @@
     namespace BBDropbox\Core;
     use BBCurl\Core\Request;
 
-    class Dropbox extends Request{
+
+    class Dropbox{
 
         private $token;
         private $userToken;
 
-        public function __construct(string $uri)
-        {
-            parent::__construct($uri);
-        }
-
-        public function auth(string $token, string $userToken)
+        public function auth(string $token, string $userToken=null)
         {
             $this->token = $token;
             $this->userToken = $userToken;
             return $this;
         }
 
+
+        public function membersList(){
+            if (bb_session_request_limit("membersList", 3, 60*5)) {
+                return true;
+            }
+            return (new Request(URI_MEMBERS_LIST))->withJson()
+                ->setHeader("Authorization", $this->token)
+                ->post(['limit' => 100, 'include_removed' => false])->run()->data();
+        }
+
+
         public function listFolder($path)
         {
             if (bb_session_request_limit("listFolder", 3, 60*5)) {
                 return true;
             }
-            $data = $this
+            $data = (new Request(URI_FOLDER_LIST))
                 ->withJson()
                 ->setHeader("Authorization", $this->token)
                 ->setHeader("Dropbox-API-Select-User", $this->userToken)
@@ -42,7 +49,7 @@
             if (bb_session_request_limit("downloadFile", 3, 60*5)) {
                 return true;
             }
-            $this
+            (new Request(URI_DOWNLOAD_FILE))
                 ->post()
                 ->setHeader("Authorization", $this->token)
                 ->setHeader("Dropbox-API-Select-User", $this->userToken)
@@ -51,8 +58,8 @@
             return true;
         }
 
-        public function downloadZip(string $path, string $dest, bool $descompactar=false, string $folder=null){
-            $mydest = explode("/", $dest);
+        public function downloadZip(string $cloud, string $disk, bool $descompactar=false, string $folder=null){
+            $mydest = explode("/", $disk);
             array_pop($mydest);
             $folder = empty($folder) ? '' : $folder . '/';
             $mydest = implode("/", $mydest) . '/' . $folder;
@@ -60,19 +67,19 @@
             if (bb_session_request_limit("downloadZip", 3, 60*5)) {
                 return true;
             }
-            $this
+            (new Request(URI_DOWNLOAD_ZIP))
                 ->post()
                 ->setHeader("Authorization", $this->token)
                 ->setHeader("Dropbox-API-Select-User", $this->userToken)
-                ->setJsonHeader("Dropbox-API-Arg", ['path' => $path])
-                ->download($dest);
+                ->setJsonHeader("Dropbox-API-Arg", ['path' => $cloud])
+                ->download($disk);
 
                 if($descompactar){
                         $zip = new \ZipArchive;
-                        if ($zip->open($dest) === TRUE) {
+                        if ($zip->open($disk) === TRUE) {
                             $zip->extractTo($mydest);
                             $zip->close();
-                            unlink($dest);
+                            unlink($disk);
                             return true;
                         } else {
                             return false;
@@ -104,7 +111,7 @@
                 return true;
             }
 
-            $this
+            (new Request(URI_UPLOAD_FILE))
                 ->post(['path' => $path])
                 ->withJson()
                 ->setHeader("Authorization", $this->token)
@@ -119,7 +126,7 @@
                 return true;
             }
 
-             $this
+            (new Request(URI_EXPORT_FILE))
                 ->post()
                 ->setJsonHeader("Dropbox-API-Arg", ["path" => $path])
                 ->setHeader("Authorization", $this->token)
@@ -134,7 +141,7 @@
             if (bb_session_request_limit("searchFileFolder", 3, 60*5)) {
                 return true;
             }
-            $result = $this
+            $result = (new Request(URI_SEARCH))
                     ->post([
                         "query" => $query,
                         "options" => [
