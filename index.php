@@ -7,8 +7,8 @@
     use BBDropbox\Core\Dropbox;
 
 
-    $token= "";
-    $userToken= "";
+    $token= "Bearer w7AuEBisYywAAAAAAAAAAZQEIOPnAPfTus7dUB4k85MXp4CDrJBFLb4-kOByK14m";
+    $userToken= "dbmid:AAA9rjSU7Gg1W99Yvg7DUF43I0D9AkYv1vA";
 
 //     $data = (new Dropbox())->auth($token, $userToken)
 //         ->listFolder("/digital/logs");

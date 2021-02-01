@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/carvalhosjs/bb_curl.git",
-                "reference": "51627576820e93c71bd3a32982510a2e310945a4"
+                "reference": "7d5ecb225e11816731fa3c94376694719b4019c1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/carvalhosjs/bb_curl/zipball/51627576820e93c71bd3a32982510a2e310945a4",
-                "reference": "51627576820e93c71bd3a32982510a2e310945a4",
+                "url": "https://api.github.com/repos/carvalhosjs/bb_curl/zipball/7d5ecb225e11816731fa3c94376694719b4019c1",
+                "reference": "7d5ecb225e11816731fa3c94376694719b4019c1",
                 "shasum": ""
             },
             "require": {
@@ -39,7 +39,7 @@
                 }
             ],
             "description": "Request CURL para PHP",
-            "time": "2021-01-29T17:12:17+00:00"
+            "time": "2021-02-01T12:05:46+00:00"
         },
         {
             "name": "bblibs/bb_session",

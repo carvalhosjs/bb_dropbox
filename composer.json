@@ -2,6 +2,7 @@
   "name": "bblibs/bb_dropbox",
   "description": "Request Dropbox para PHP",
   "minimum-stability": "stable",
+  "license": "MIT",
   "authors": [
     {
       "name": "Carlos Mateus Carvalho",
